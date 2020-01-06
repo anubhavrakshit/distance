@@ -30,22 +30,21 @@ int distance(vector<vector<int> > &adj, vector<vector<int> > &cost, int s, int t
             PQ.pop();
             continue;
         }
-        // std::cout << "Min Vertex " << v << " Dist " << d << std::endl;
+        std::cout << "Min Vertex " << v << " Dist " << d << std::endl;
         // Relax edges of vu and re-insert into PQ
         for (int i = 0; i < adj[v].size(); i++) {
             int u = adj[v][i];
             int c = cost[v][i];
 
-            // std::cout << "Cost of " << v << "->" << u << " is " << c << std::endl;
+            std::cout << "Cost of " << v << "->" << u << " is " << c << std::endl;
             // Can this happen ??
             if (dist[v] == INT_MAX && dist[u] == INT_MAX) {
-                // std::cout << "Can not relax edge " << v << "->" << u << std::endl;
+                std::cout << "Can not relax edge " << v << "->" << u << std::endl;
             } else {
-                // std::cout << "Neighbour vertex " << u << std::endl;
                 if (dist[u] > dist[v] + c) {
                     // can be relaxed
                     dist[u] = dist[v] + c;
-                    // std::cout << "New dist " << dist[u] << std::endl;
+                    std::cout << "Relaxed dist " << dist[u] << std::endl;
                     // update the vertex with new key
                     PQ.push(std::make_pair(dist[u],u));
                 }
@@ -53,7 +52,7 @@ int distance(vector<vector<int> > &adj, vector<vector<int> > &cost, int s, int t
 
         }
         // Done processing this Vertex
-        // std::cout << "Processed vertex " << v;
+        std::cout << "Processed vertex " << v << "\n\n";
         PQ.pop();
     }
 
